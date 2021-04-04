@@ -32,3 +32,4 @@
 
 - configure nx boundaries for workspace
 - configure eslint plugin boundraries eslint-plugin-boundaries
+- hack nx webpack ts loader disable typecheck
