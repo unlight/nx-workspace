@@ -1,4 +1,4 @@
-# nx-nest-workspace
+# nx-workspace
 
 - Run `nx.js run [project][:target][:configuration][options, ...]`
 - Generate app `nx generate @nrwl/node:application <node-app>`
@@ -6,7 +6,7 @@
 - Upgrade `nx migrate latest`
 - Run `nx g @nrwl/react:app my-app` to generate an application
 - Run `nx g @nrwl/react:lib my-lib` to generate a library
-- Libraries are shareable across libraries and applications. They can be imported from `@nx-nest-workspace/mylib`
+- Libraries are shareable across libraries and applications. They can be imported from `@nx-workspace/mylib`
 - Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/.
   The app will automatically reload if you change any of the source files
 - Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component
@@ -19,6 +19,7 @@
 - Run `nx dep-graph` to see a diagram of the dependencies of your projects
 - General generate `nx generate [collection:][generator] [options, ...]`
 - Format `npm run format`
+- Remove project `nx g remove project`
 
 ## Resources
 

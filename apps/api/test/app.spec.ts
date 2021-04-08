@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { inspect } from 'util';
 
-import { createApp } from '../../api/src/main';
+import { createApp } from '../src/main';
 
 const d = (o: any) =>
   console.log(inspect(o, { colors: true, depth: null, compact: true }));

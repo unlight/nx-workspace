@@ -1,8 +1,6 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/nest"
-  },
+  "cli": { "defaultCollection": "@nrwl/nest" },
   "defaultProject": "api",
   "projects": {
     "api": {
@@ -35,15 +33,11 @@
         },
         "serve": {
           "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "api:build"
-          }
+          "options": { "buildTarget": "api:build" }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/api/**/*.ts"]
-          }
+          "options": { "lintFilePatterns": ["apps/api/**/*.ts"] }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -52,55 +46,12 @@
             "jestConfig": "apps/api/jest.config.js",
             "passWithNoTests": true
           }
-        }
-      }
-    },
-    "api-spec": {
-      "root": "apps/api-spec",
-      "sourceRoot": "apps/api-test/src",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "outputPath": "dist/apps/api-spec",
-            "main": "apps/api-spec/src/main.ts",
-            "tsConfig": "apps/api-spec/tsconfig.app.json",
-            "assets": ["apps/api-spec/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/api-spec/src/environments/environment.ts",
-                  "with": "apps/api-spec/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
         },
-        "serve": {
-          "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "api-spec:build"
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/api-spec/**/*.ts"]
-          }
-        },
-        "test": {
+        "e2e": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/api-spec"],
+          "outputs": ["coverage/apps/api-e2e"],
           "options": {
-            "jestConfig": "apps/api-spec/jest.config.js",
-            "passWithNoTests": true
+            "jestConfig": "apps/api/jest-e2e.config.js"
           }
         }
       }
