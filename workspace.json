@@ -33,7 +33,11 @@
         },
         "serve": {
           "executor": "@nrwl/node:execute",
-          "options": { "buildTarget": "api:build" }
+          "options": {
+            "buildTarget": "api:build",
+            "inspect": true,
+            "port": 9277
+          }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
