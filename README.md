@@ -23,14 +23,16 @@
 
 ## Resources
 
-- https://nx.dev Nx Documentation
-- https://nx.dev/nx-community community plugins
+- Nx Documentation https://nx.dev
+- Community plugins https://nx.dev/nx-community
 - https://www.youtube.com/watch?v=bvzXuAu7XHk Full Stack Type Safety with Angular, Nest, Nx, and Prisma https://github.com/chenkie/shirt-shop
 - [How to programmatically enforce boundaries between applications and libraries in an Nx monorepo](https://medium.com/showpad-engineering/how-to-programmatically-enforce-boundaries-between-applications-and-libraries-in-an-nx-monorepo-39bf8fbec6ba)
 - [How to organize and name applications and libraries in an Nx monorepo for immediate team-wide…](https://medium.com/showpad-engineering/how-to-organize-and-name-applications-and-libraries-in-an-nx-monorepo-for-immediate-team-wide-9876510dbe28)
+- Nx Workspaces Course https://www.youtube.com/watch?v=2mYLe9Kp9VM&list=PLakNactNC1dH38AfqmwabvOszDmKriGco&ab_channel=Nrwl-NarwhalTechnologiesInc.
 
 ## Todo
 
+- integrate react-typescript-vite-app
 - configure nx boundaries for workspace
 - configure eslint plugin boundraries eslint-plugin-boundaries
 - left hook
