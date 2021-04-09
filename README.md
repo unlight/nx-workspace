@@ -33,12 +33,14 @@
 - [How to programmatically enforce boundaries between applications and libraries in an Nx monorepo](https://medium.com/showpad-engineering/how-to-programmatically-enforce-boundaries-between-applications-and-libraries-in-an-nx-monorepo-39bf8fbec6ba)
 - [How to organize and name applications and libraries in an Nx monorepo for immediate team-wide…](https://medium.com/showpad-engineering/how-to-organize-and-name-applications-and-libraries-in-an-nx-monorepo-for-immediate-team-wide-9876510dbe28)
 - Nx Workspaces Course https://www.youtube.com/watch?v=2mYLe9Kp9VM&list=PLakNactNC1dH38AfqmwabvOszDmKriGco&ab_channel=Nrwl-NarwhalTechnologiesInc.
+- https://nx.dev/latest/angular/executors/run-commands-builder
 - https://github.com/nrwl/nx/blob/master/packages/workspace/docs/run-commands-examples.md
 - https://nx.dev/latest/react/workspace/run-commands-executor
+- https://medium.com/angular-in-depth/the-shell-library-patterns-with-nx-and-monorepo-architectures-d7ec5713c8a6
 
 ## Todo
 
-- integrate react-typescript-vite-app
+- integrate react-typescript-vite-app (custom command)
 - configure nx boundaries for workspace
 - configure eslint plugin boundraries eslint-plugin-boundaries
 - left hook
