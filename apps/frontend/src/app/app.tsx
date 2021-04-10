@@ -12,7 +12,6 @@ export function App() {
       </header>
       <main>
         <h2>Resources &amp; Tools</h2>
-        <p>Thank you for using and showing some ♥ for Nx.</p>
         <div className="flex github-star-container">
           <a
             href="https://github.com/nrwl/nx"
@@ -22,7 +21,7 @@ export function App() {
             {' '}
             If you like Nx, please give it a star:
             <div className="github-star-badge">
-              <img src={star} className="material-icons" alt="" />
+              <img src={star} className="material-icons" alt="icon" />
               Star
             </div>
           </a>

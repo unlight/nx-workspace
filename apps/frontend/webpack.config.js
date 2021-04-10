@@ -1,3 +1,4 @@
+const assert = require('assert');
 const nrwlReact = require('@nrwl/react/plugins/webpack');
 
 /**
@@ -7,15 +8,17 @@ module.exports = (config, { options, configuration }) => {
   config = nrwlReact(config);
 
   const cssRule = config.module.rules.find(r => String(r.test).includes('\\.css$'));
-  const loaders = cssRule?.oneOf?.filter(loader => String(loader.test) === '/\\.css$/');
-  const [cssLoader, globalStyleLoader] = loaders;
-  globalStyleLoader && configurePostcssLoader(globalStyleLoader);
-  // console.dir(loaders, { depth: 5 });
+  cssRule.oneOf
+    .flatMap(x => x.use)
+    .filter(x => x.loader?.includes('postcss-loader'))
+    .map(x =>
+      x.options.postcssOptions.postcssOptions ? x.options.postcssOptions : x.options,
+    )
+    .forEach(configurePostcssLoaderOptions);
 
   config.plugins = config.plugins.filter(p => {
     const pluginName = p?.constructor?.name;
     if (
-      options.watch &&
       pluginName === 'ForkTsCheckerWebpackPlugin' &&
       process.env.WORKSPACE_NO_TS_CHECK
     ) {
@@ -27,25 +30,20 @@ module.exports = (config, { options, configuration }) => {
   return config;
 };
 
-function configurePostcssLoader(loader) {
-  const postcssLoader = loader.use.find(
-    loader =>
-      typeof loader === 'object' && typeof loader.options.postcssOptions === 'function',
+function configurePostcssLoaderOptions(options) {
+  assert.strictEqual(typeof options.postcssOptions, 'function');
+  options.postcssOptions = createPostcssOptions.bind(undefined, options.postcssOptions);
+}
+
+function createPostcssOptions(originalPostcssOptions, loaderContext) {
+  const postcssConfig = originalPostcssOptions(loaderContext);
+  postcssConfig.plugins.push(
+    require('tailwindcss')({ config: `${__dirname}/tailwind.config.js` }),
   );
-  const originalPostcssOptions = postcssLoader.options.postcssOptions;
-
-  postcssLoader.options.postcssOptions = configurePostcssOptions;
-
-  function configurePostcssOptions(loaderContext) {
-    const postcssConfig = originalPostcssOptions(loaderContext);
-    postcssConfig.plugins.push(
-      require('tailwindcss')({ config: `${__dirname}/tailwind.config.js` }),
-    );
-    const autoprefixerIndex = postcssConfig.plugins.findIndex(
-      p => p.postcssPlugin === 'autoprefixer',
-    );
-    // Move autoprefixer to last position
-    postcssConfig.plugins.push(...postcssConfig.plugins.splice(autoprefixerIndex, 1));
-    return postcssConfig;
-  }
+  const autoprefixerIndex = postcssConfig.plugins.findIndex(
+    p => p.postcssPlugin === 'autoprefixer',
+  );
+  // Move autoprefixer to last position
+  postcssConfig.plugins.push(...postcssConfig.plugins.splice(autoprefixerIndex, 1));
+  return postcssConfig;
 }
