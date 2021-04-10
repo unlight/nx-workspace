@@ -24,6 +24,7 @@
 - Generate UI lib `nx g @nrwl/react:lib ui`
 - Add a component `nx g @nrwl/react:component xyz --project ui`
 - Build production `nx run frontend:build --prod` or `nx run frontend:build:production`
+- Debug nx run `ndb node_modules/@nrwl/cli/bin/nx.js run frontend:build`
 
 ## Resources
 
@@ -40,7 +41,8 @@
 
 ## Todo
 
+- we still need purgecss as postcss plugin (purge doesn not work in jit mode)
 - integrate react-typescript-vite-app (custom command)
 - configure nx boundaries for workspace
 - configure eslint plugin boundraries eslint-plugin-boundaries
-- left hook
+- lefthook

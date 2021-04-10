@@ -7,10 +7,13 @@
 #
 # If you need to support different browsers in production, you may tweak the list below.
 
-last 1 Chrome version
-last 1 Firefox version
+[production]
+last 2 Chrome version
+last 2 Firefox version
 last 2 Edge major versions
 last 2 Safari major version
 last 2 iOS major versions
-Firefox ESR
-# IE 11 # remove if not needed
+IE 11
+
+[development]
+last 1 Chrome version
