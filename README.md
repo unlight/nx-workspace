@@ -25,6 +25,7 @@
 - Add a component `nx g @nrwl/react:component xyz --project ui`
 - Build production `nx run frontend:build --prod` or `nx run frontend:build:production`
 - Debug nx run `ndb node_modules/@nrwl/cli/bin/nx.js run frontend:build`
+- You need set env `NODE_ENV=development | production` when serve or build:production (nx does not do it)
 
 ## Resources
 
@@ -41,7 +42,7 @@
 
 ## Todo
 
-- we still need purgecss as postcss plugin (purge doesn not work in jit mode)
+- purgecss https://tailwindcss.com/docs/optimizing-for-production#removing-unused-css
 - integrate react-typescript-vite-app (custom command)
 - configure nx boundaries for workspace
 - configure eslint plugin boundraries eslint-plugin-boundaries
