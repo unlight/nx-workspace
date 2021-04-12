@@ -24,6 +24,9 @@ module.exports = (config, { options, configuration }) => {
     ) {
       return false;
     }
+    if (pluginName === 'LicenseWebpackPlugin') {
+      return false;
+    }
     return true;
   });
 

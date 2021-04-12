@@ -39,7 +39,7 @@
           "configurations": {
             "production": {
               "optimization": true,
-              "extractLicenses": true,
+              "extractLicenses": false,
               "inspect": false,
               "fileReplacements": [
                 {
@@ -113,7 +113,7 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "extractLicenses": true,
+              "extractLicenses": false,
               "vendorChunk": false,
               "budgets": [
                 {
