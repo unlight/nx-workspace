@@ -1,6 +1,7 @@
 module.exports = {
   mode: 'aot',
   purge: {
+    enabled: false,
     mode: 'all',
     content: [`${__dirname}/src/index.html`, `${__dirname}/src/**/*.tsx`],
   },

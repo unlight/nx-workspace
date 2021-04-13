@@ -1,20 +1,21 @@
 const assert = require('assert');
 const nrwlReact = require('@nrwl/react/plugins/webpack');
+const createPostcssConfig = require('./postcss.config.js');
 
 /**
  * @param  { import('webpack').Configuration } config
  */
 module.exports = (config, { options, configuration }) => {
   config = nrwlReact(config);
-
   const cssRule = config.module.rules.find(r => String(r.test).includes('\\.css$'));
+  const postcssCreateContext = { env: config.mode };
   cssRule.oneOf
     .flatMap(x => x.use)
     .filter(x => x.loader?.includes('postcss-loader'))
     .map(x =>
       x.options.postcssOptions.postcssOptions ? x.options.postcssOptions : x.options,
     )
-    .forEach(configurePostcssLoaderOptions);
+    .forEach(configurePostcssLoaderOptions.bind(undefined, postcssCreateContext));
 
   config.plugins = config.plugins.filter(p => {
     const pluginName = p?.constructor?.name;
@@ -33,20 +34,25 @@ module.exports = (config, { options, configuration }) => {
   return config;
 };
 
-function configurePostcssLoaderOptions(options) {
+function configurePostcssLoaderOptions(postcssCreateContext, options) {
   assert.strictEqual(typeof options.postcssOptions, 'function');
-  options.postcssOptions = createPostcssOptions.bind(undefined, options.postcssOptions);
+  options.postcssOptions = createPostcssOptions.bind(
+    undefined,
+    postcssCreateContext,
+    options.postcssOptions,
+  );
 }
 
-function createPostcssOptions(originalPostcssOptions, loaderContext) {
+function createPostcssOptions(
+  postcssCreateContext,
+  originalPostcssOptions,
+  loaderContext,
+) {
   const postcssConfig = originalPostcssOptions(loaderContext);
-  postcssConfig.plugins.push(
-    require('tailwindcss')({ config: `${__dirname}/tailwind.config.js` }),
+  postcssConfig.plugins = postcssConfig.plugins.filter(
+    p => p.postcssPlugin !== 'autoprefixer',
   );
-  const autoprefixerIndex = postcssConfig.plugins.findIndex(
-    p => p.postcssPlugin === 'autoprefixer',
-  );
-  // Move autoprefixer to last position
-  postcssConfig.plugins.push(...postcssConfig.plugins.splice(autoprefixerIndex, 1));
+  const { plugins } = createPostcssConfig(postcssCreateContext);
+  postcssConfig.plugins.push(...plugins);
   return postcssConfig;
 }
