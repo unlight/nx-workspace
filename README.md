@@ -26,9 +26,12 @@
 - Build production `nx run frontend:build --prod` or `nx run frontend:build:production`
 - Debug nx run `ndb node_modules/@nrwl/cli/bin/nx.js run frontend:build`
 - You need set env `NODE_ENV=development | production` when serve or build:production (nx does not do it)
+- Generate library `nx generate @nrwl/workspace:library`
+- Run test for all `nx run-many --all --target=test`
 
 ## Resources
 
+- https://getpocket.com/my-list/tags/nx
 - Nx Documentation https://nx.dev
 - Community plugins https://nx.dev/nx-community
 - https://www.youtube.com/watch?v=bvzXuAu7XHk Full Stack Type Safety with Angular, Nest, Nx, and Prisma https://github.com/chenkie/shirt-shop

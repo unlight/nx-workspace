@@ -15,4 +15,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/apps/api',
+  testEnvironment: 'node',
 };

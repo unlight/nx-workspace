@@ -1,4 +1,4 @@
-const assert = require('assert');
+const { ok } = require('assert');
 const nrwlReact = require('@nrwl/react/plugins/webpack');
 const createPostcssConfig = require('./postcss.config.js');
 
@@ -35,7 +35,7 @@ module.exports = (config, { options, configuration }) => {
 };
 
 function configurePostcssLoaderOptions(postcssCreateContext, options) {
-  assert.strictEqual(typeof options.postcssOptions, 'function');
+  ok(typeof options.postcssOptions === 'function');
   options.postcssOptions = createPostcssOptions.bind(
     undefined,
     postcssCreateContext,
