@@ -8,6 +8,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx run-many --all --target=lint && nx run-many --all --target=test && nx run-many --all --target=e2e",
+    "build:prod": "nx run-many --all --target=build --prod",
     "test_": "nx test",
     "test:api": "nx run api:test",
     "lint": "nx workspace-lint && nx lint",
