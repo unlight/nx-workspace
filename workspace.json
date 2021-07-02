@@ -18,6 +18,17 @@
         "style": "css",
         "linter": "eslint"
       }
+    },
+    "@nrwl/web:application": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "none"
+    },
+    "@nrwl/web:library": {
+      "style": "css",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
     }
   },
   "projects": {
@@ -174,6 +185,56 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/frontend-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "vite": {
+      "projectType": "application",
+      "root": "apps/vite",
+      "sourceRoot": "apps/vite/src",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/workspace:run-commands",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "cwd": "apps/vite",
+            "parallel": false,
+            "commands": ["npx vite build"]
+          },
+          "configurations": {
+            "production": {}
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "apps/vite",
+            "parallel": false,
+            "commands": [
+              {
+                "command": "npx vite serve -d -l=info"
+              }
+            ]
+          },
+          "configurations": {
+            "production": {
+              "commands": ["npx tsc", "npx vite build", "npx vite preview"]
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/vite/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/vite"],
+          "options": {
+            "jestConfig": "apps/vite/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
