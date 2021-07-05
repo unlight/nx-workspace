@@ -18,7 +18,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-workspace/conduit.api": ["libs/conduit.api/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

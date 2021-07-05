@@ -25,6 +25,12 @@
     "api": {
       "tags": []
     },
+    "conduit": {
+      "tags": []
+    },
+    "conduit.api": {
+      "tags": []
+    },
     "frontend": {
       "tags": []
     },

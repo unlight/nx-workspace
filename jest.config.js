@@ -1,3 +1,9 @@
 module.exports = {
-  projects: ['<rootDir>/apps/api', '<rootDir>/apps/frontend', '<rootDir>/apps/vite'],
+  projects: [
+    '<rootDir>/apps/api',
+    '<rootDir>/apps/frontend',
+    '<rootDir>/apps/vite',
+    '<rootDir>/apps/conduit',
+    '<rootDir>/libs/conduit.api',
+  ],
 };

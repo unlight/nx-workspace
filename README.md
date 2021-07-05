@@ -1,5 +1,6 @@
 # nx-workspace
 
+- Start project `npx create-nx-workspace@latest`
 - Run `nx.js run [project][:target][:configuration][options, ...]`
 - Generate app `nx generate @nrwl/node:application <node-app>`
 - Rename `nx g @nrwl/workspace:mv --project api-test --destination api-spec`
