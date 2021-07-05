@@ -1,1 +1,1 @@
-export * from './lib/conduit.api.module';
+export { UserModule } from './user/user.module';

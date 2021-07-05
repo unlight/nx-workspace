@@ -32,6 +32,7 @@
 - Run test for all `nx run-many --all --target=test`
 - Run custom build cmd `nx run --verbose vite:build`
 - Generate nest module for project `nx generate @nrwl/nest:module user --project=conduit.api`
+- Generate class `nx g @nrwl/nest:class --project=conduit.api --flat --name=user/commands/user-create/UserCreate.Command`
 
 ## Resources
 
