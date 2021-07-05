@@ -22,12 +22,14 @@
 - Remove project `nx g remove project`
 - Info about nx plugin `nx list @nrwl/react`
 - Generate UI lib `nx g @nrwl/react:lib ui`
+- Generate other something `nx g @nrwl/workspace:application`
 - Add a component `nx g @nrwl/react:component xyz --project ui`
 - Build production `nx run frontend:build --prod` or `nx run frontend:build:production`
 - Debug nx run `ndb node_modules/@nrwl/cli/bin/nx.js run frontend:build`
 - You need set env `NODE_ENV=development | production` when serve or build:production (nx does not do it)
 - Generate library `nx generate @nrwl/workspace:library`
 - Run test for all `nx run-many --all --target=test`
+- Run custom build cmd `nx run --verbose vite:build`
 
 ## Resources
 
@@ -42,6 +44,8 @@
 - https://github.com/nrwl/nx/blob/master/packages/workspace/docs/run-commands-examples.md
 - https://nx.dev/latest/react/workspace/run-commands-executor
 - https://medium.com/angular-in-depth/the-shell-library-patterns-with-nx-and-monorepo-architectures-d7ec5713c8a6
+- https://github.com/briebug/cypress-schematic
+- https://nx.dev/latest/node/workspace/run-commands-executor
 
 ## Todo
 
