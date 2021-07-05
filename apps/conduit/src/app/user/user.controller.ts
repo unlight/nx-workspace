@@ -16,16 +16,15 @@ export class UserController {
   @Post()
   async createUser(@Body() userCreateInput: UserCreateInput) {
     // TODO: Automapper
-    return this.commandBus.execute(new UserCreateCommand({}));
-    // const result = await this.service.createUser(request.body.user);
-    // const firstError = result.errors?.[0]?.extensions?.data;
-    // if (firstError) {
-    //     throw firstError;
-    // }
-    // return result;
+    return this.commandBus.execute(
+      new UserCreateCommand({
+        name: userCreateInput.name,
+        email: userCreateInput.email,
+        password: userCreateInput.password,
+      }),
+    );
   }
-  // *
-  //  * Authentication.
+  // Authentication.
   // @Post('users/login')
   // async postUsersLogin(@Req() request: Request) {
   //     return this.service.loginUser(request.body.user);

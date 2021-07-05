@@ -20,7 +20,7 @@
 - Run `nx dep-graph` to see a diagram of the dependencies of your projects
 - General generate `nx generate [collection:][generator] [options, ...]`
 - Format `npm run format`
-- Remove project `nx g remove project`
+- Remove project `nx g remove project_name`
 - Info about nx plugin `nx list @nrwl/react`
 - Generate UI lib `nx g @nrwl/react:lib ui`
 - Generate other something `nx g @nrwl/workspace:application`

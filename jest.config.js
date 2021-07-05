@@ -4,6 +4,5 @@ module.exports = {
     '<rootDir>/apps/frontend',
     '<rootDir>/apps/vite',
     '<rootDir>/apps/conduit',
-    '<rootDir>/libs/conduit.api',
   ],
 };

@@ -1,5 +1,6 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { UserCreateCommand } from './user-create.command';
+import { Inject } from '@nestjs/common';
 
 // import { HeroRepository } from '../../repository/hero.repository';
 // import { KillDragonCommand } from '../impl/kill-dragon.command';
@@ -54,7 +55,16 @@ import { UserCreateCommand } from './user-create.command';
 
 @CommandHandler(UserCreateCommand)
 export class UserCreateHandler implements ICommandHandler<UserCreateCommand> {
+  constructor(
+    private readonly publisher: EventPublisher
+    @Inject('UserRepository') private readonly repository: UserRepository
+  ) {}
+
   execute(command: UserCreateCommand): Promise<void> {
-    throw new Error('Method not implemented.');
+    const user = this.publisher.mergeObjectContext(
+      await this.repository.findOneById(+heroId),
+    );
+    // hero.killEnemy(dragonId);
+    hero.commit();
   }
 }

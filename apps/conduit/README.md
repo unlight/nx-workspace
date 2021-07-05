@@ -1,7 +1,6 @@
-## BAckend Specs
+# conduit.api
 
-- https://github.com/gothinkster/realworld/tree/master/api
+## Resouces
 
-## Resources
-
-- https://github.com/victormonserrat/mustodon
+- https://github.com/victormonserrat/mustodon/tree/master/src/todos
+- https://github.com/todaprojects/TodoList-CQRS/tree/master/TodoListWebApi
