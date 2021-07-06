@@ -2,8 +2,8 @@ import { InjectMapper, AutomapperProfile } from '@automapper/nestjs';
 import { Injectable } from '@nestjs/common';
 import { mapFrom } from '@automapper/core';
 import { Mapper } from '@automapper/types';
-import { UserCreateInput } from './user-create.input';
 import { UserCreateCommand } from './commands/user-create/user-create.command';
+import { UserCreateInput } from './dtos/user-create-input.dto';
 
 @Injectable()
 export class UserProfile extends AutomapperProfile {

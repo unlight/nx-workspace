@@ -1,9 +1,10 @@
-import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
-import { UserCreateInput } from './user-create.input';
+import { Body, Controller, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { UserCreateCommand } from './commands/user-create/user-create.command';
 import { InjectMapper } from '@automapper/nestjs';
 import { Mapper } from '@automapper/types';
+import { UserCreateInputEnvelope } from './dtos/user-create-input-envelop.dto';
+import { UserCreateInput } from './dtos/user-create-input.dto';
 
 @Controller('user')
 export class UserController {
@@ -17,10 +18,9 @@ export class UserController {
    * Registration.
    */
   @Post()
-  @UsePipes({ transform: x => x.user }, new ValidationPipe({ transform: true }))
-  async createUser(@Body() userCreateInput: UserCreateInput) {
+  async createUser(@Body() userCreateInputEnvelope: UserCreateInputEnvelope) {
     const command = this.mapper.map(
-      userCreateInput,
+      userCreateInputEnvelope.user,
       UserCreateCommand,
       UserCreateInput,
     );

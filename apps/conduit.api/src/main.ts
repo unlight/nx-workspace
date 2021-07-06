@@ -21,14 +21,14 @@ export async function createApp(options?: NestApplicationOptions) {
 export async function configureApp(app: INestApplication) {
   app.setGlobalPrefix('api');
   app.enableCors();
-  // app.useGlobalPipes(
-  //   new ValidationPipe({
-  //     transform: true,
-  //     validationError: {
-  //       target: false,
-  //     },
-  //   }),
-  // );
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      validationError: {
+        target: false,
+      },
+    }),
+  );
 }
 
 async function main() {

@@ -28,6 +28,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
+    "tsc": "tsc",
     "clean_cache": "rm -rf node_modules/.cache/nx"
   },
   "dependencies": {

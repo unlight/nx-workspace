@@ -14,11 +14,11 @@ import { UserModule } from './user/user.module';
         {
           name: 'root',
           pluginInitializer: classes,
-          // errorHandler: {
-          //   handle: message => {
-          //     console.log('message', message);
-          //   },
-          // },
+          errorHandler: {
+            handle: message => {
+              throw message;
+            },
+          },
         },
       ],
       singular: true,

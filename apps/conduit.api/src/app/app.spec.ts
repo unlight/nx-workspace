@@ -31,8 +31,11 @@ describe('user', () => {
       .set('Content-Type', 'application/json')
       .send({ user: { email: '', username: '', password: '' } })
       .then(r => r);
-    expect(response.body).toBeTruthy();
-    expect(response.status).toEqual(400);
+    expect(response).toEqual(
+      expect.objectContaining({
+        status: 400,
+      }),
+    );
   });
 
   it('registration create user', async () => {

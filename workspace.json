@@ -139,6 +139,14 @@
             "passWithNoTests": true,
             "runInBand": true
           }
+        },
+        "tsc": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "cwd": "apps/conduit.api",
+            "parallel": false,
+            "commands": ["npx tsc -p tsconfig.app.json --noEmit --watch"]
+          }
         }
       }
     },

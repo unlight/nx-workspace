@@ -53,6 +53,7 @@
 
 ## Todo
 
+- configure custom command to tscheck
 - purgecss https://tailwindcss.com/docs/optimizing-for-production#removing-unused-css
 - integrate react-typescript-vite-app (custom command)
 - configure nx boundaries for workspace
