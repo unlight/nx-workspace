@@ -103,8 +103,7 @@
           "options": {
             "outputPath": "dist/apps/conduit.api",
             "main": "apps/conduit.api/src/main.ts",
-            "tsConfig": "apps/conduit.api/tsconfig.app.json",
-            "assets": ["apps/conduit.api/src/assets"]
+            "tsConfig": "apps/conduit.api/tsconfig.app.json"
           },
           "configurations": {
             "production": {
@@ -137,7 +136,8 @@
           "outputs": ["coverage/apps/conduit.api"],
           "options": {
             "jestConfig": "apps/conduit.api/jest.config.js",
-            "passWithNoTests": true
+            "passWithNoTests": true,
+            "runInBand": true
           }
         }
       }

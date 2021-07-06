@@ -33,6 +33,7 @@
 - Run custom build cmd `nx run --verbose vite:build`
 - Generate nest module for project `nx generate @nrwl/nest:module user --project=conduit.api`
 - Generate class `nx g @nrwl/nest:class --project=conduit.api --flat --name=user/commands/user-create/UserCreate.Command`
+- `node --inspect-brk node_modules/jest/bin/jest --runInBand --config apps/conduit.api/jest.config.js`
 
 ## Resources
 

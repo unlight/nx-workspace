@@ -1,4 +1,10 @@
-# conduit.api.api
+# conduit.api
+
+- Application
+  - Commands
+  - Handlers
+  - Mapping
+  - Queries
 
 ## Resouces
 

@@ -9,9 +9,9 @@ export class UserCreateInput {
   // TODO: @Validate(UserExistsValidator)
   email!: string;
 
-  @IsNotEmpty()
   @MinLength(3)
-  name!: string;
+  @IsNotEmpty()
+  username!: string;
 
   @IsNotEmpty()
   password!: string;

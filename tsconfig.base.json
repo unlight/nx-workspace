@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "pretty": true,
-    "target": "es2015",
+    "target": "es2020",
     "module": "esnext",
     "strict": true,
     "noUncheckedIndexedAccess": true,

@@ -1,8 +1,11 @@
+const preset = require('../../jest.preset.js');
+
 module.exports = {
   displayName: 'conduit.api',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': {
+      ...preset['ts-jest'],
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
