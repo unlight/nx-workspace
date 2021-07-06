@@ -25,7 +25,10 @@
     "api": {
       "tags": []
     },
-    "conduit": {
+    "conduit.api": {
+      "tags": []
+    },
+    "conduit.domain": {
       "tags": []
     },
     "frontend": {

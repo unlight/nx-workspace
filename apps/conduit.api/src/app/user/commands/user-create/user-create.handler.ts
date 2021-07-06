@@ -1,6 +1,8 @@
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
 import { UserCreateCommand } from './user-create.command';
 import { Inject } from '@nestjs/common';
+import { UserRepositoryInterface } from '@nx-workspace/conduit.domain';
+import { User } from '../../user.model';
 
 // import { HeroRepository } from '../../repository/hero.repository';
 // import { KillDragonCommand } from '../impl/kill-dragon.command';
@@ -56,15 +58,14 @@ import { Inject } from '@nestjs/common';
 @CommandHandler(UserCreateCommand)
 export class UserCreateHandler implements ICommandHandler<UserCreateCommand> {
   constructor(
-    private readonly publisher: EventPublisher
-    @Inject('UserRepository') private readonly repository: UserRepository
+    private readonly publisher: EventPublisher,
+    @Inject('UserRepository') private readonly repository: UserRepositoryInterface,
   ) {}
 
-  execute(command: UserCreateCommand): Promise<void> {
-    const user = this.publisher.mergeObjectContext(
-      await this.repository.findOneById(+heroId),
-    );
-    // hero.killEnemy(dragonId);
-    hero.commit();
+  async execute(command: UserCreateCommand): Promise<void> {
+    const userDto = await this.repository.create(command);
+    const user = this.publisher.mergeObjectContext(new User(userDto));
+    user.create(user.userId);
+    user.commit();
   }
 }

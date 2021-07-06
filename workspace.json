@@ -92,19 +92,19 @@
         }
       }
     },
-    "conduit": {
-      "root": "apps/conduit",
-      "sourceRoot": "apps/conduit/src",
+    "conduit.api": {
+      "root": "apps/conduit.api",
+      "sourceRoot": "apps/conduit.api/src",
       "projectType": "application",
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/conduit",
-            "main": "apps/conduit/src/main.ts",
-            "tsConfig": "apps/conduit/tsconfig.app.json",
-            "assets": ["apps/conduit/src/assets"]
+            "outputPath": "dist/apps/conduit.api",
+            "main": "apps/conduit.api/src/main.ts",
+            "tsConfig": "apps/conduit.api/tsconfig.app.json",
+            "assets": ["apps/conduit.api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -113,8 +113,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/conduit/src/environments/environment.ts",
-                  "with": "apps/conduit/src/environments/environment.prod.ts"
+                  "replace": "apps/conduit.api/src/environments/environment.ts",
+                  "with": "apps/conduit.api/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -123,20 +123,41 @@
         "serve": {
           "executor": "@nrwl/node:execute",
           "options": {
-            "buildTarget": "conduit:build"
+            "buildTarget": "conduit.api:build"
           }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/conduit/**/*.ts"]
+            "lintFilePatterns": ["apps/conduit.api/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/conduit"],
+          "outputs": ["coverage/apps/conduit.api"],
           "options": {
-            "jestConfig": "apps/conduit/jest.config.js",
+            "jestConfig": "apps/conduit.api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "conduit.domain": {
+      "root": "libs/conduit.domain",
+      "sourceRoot": "libs/conduit.domain/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/conduit.domain/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/conduit.domain"],
+          "options": {
+            "jestConfig": "libs/conduit.domain/jest.config.js",
             "passWithNoTests": true
           }
         }
