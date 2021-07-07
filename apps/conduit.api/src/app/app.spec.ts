@@ -38,7 +38,7 @@ describe('user', () => {
     );
   });
 
-  it('registration create user', async () => {
+  it.only('registration create user', async () => {
     const response = await request(server)
       .post('/api/user')
       .set('Content-Type', 'application/json')

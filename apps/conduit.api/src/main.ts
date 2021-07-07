@@ -29,15 +29,15 @@ export async function configureApp(app: INestApplication) {
       },
     }),
   );
+  app.enableShutdownHooks();
 }
 
 async function main() {
   const app = await createApp();
+  // const appEnvironment = app.get(AppEnvironment);
   const port = process.env.PORT || 3333;
-  const appUrl = await app.getUrl();
-  await app.listen(port, () => {
-    Logger.log(`Listening at ${appUrl}`);
-  });
+  await app.listen(port);
+  Logger.log(`Conduit.api is running on: ${await app.getUrl()}`, 'main');
 }
 
 if (process.env.NODE_ENV !== 'test') {

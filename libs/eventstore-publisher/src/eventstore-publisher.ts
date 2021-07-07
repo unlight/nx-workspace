@@ -1,14 +1,18 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { IEventPublisher } from '@nestjs/cqrs';
+import { EventBus, EventPublisher } from '@nestjs/cqrs';
 import { EVENTSTORE_CLIENT_VALUE } from './eventstore-publisher.constants';
 import { EventData, EventStoreDBClient } from './eventstore-publisher.interfaces';
 
 @Injectable()
-export class EventStorePublisher implements IEventPublisher<EventData> {
+export class EventStorePublisher extends EventPublisher<EventData> {
   constructor(
+    eventBus: EventBus<EventData>,
     @Inject(EVENTSTORE_CLIENT_VALUE)
     private readonly eventStoreClient: EventStoreDBClient,
-  ) {}
+  ) {
+    super(eventBus);
+    eventBus.publisher = this;
+  }
 
   publish<T extends EventData>(event: T) {
     // TODO: How to get stream name?

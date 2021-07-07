@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@automapper/classes": "^4.2.1",
+    "@automapper/core": "^4.2.1",
     "@automapper/nestjs": "^4.2.1",
     "@nestjs/common": "^7.6.18",
     "@nestjs/core": "^7.6.18",
@@ -51,6 +52,7 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@automapper/types": "^4.2.1",
     "@babel/core": "7.14.6",
     "@babel/preset-env": "7.14.7",
     "@babel/preset-react": "7.14.5",

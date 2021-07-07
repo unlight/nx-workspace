@@ -11,9 +11,12 @@ import {
 } from './eventstore-publisher.constants';
 import { EventStorePublisher } from './eventstore-publisher';
 import { EventStoreDBClient } from '@eventstore/db-client';
+import { CqrsModule, EventPublisher } from '@nestjs/cqrs';
 
 @Module({
+  imports: [CqrsModule],
   providers: [
+    { provide: EventPublisher, useClass: EventStorePublisher },
     EventStorePublisher,
     {
       provide: EVENTSTORE_CLIENT_VALUE,
@@ -27,11 +30,12 @@ import { EventStoreDBClient } from '@eventstore/db-client';
       },
     },
   ],
-  exports: [EventStorePublisher],
+  exports: [CqrsModule, EventPublisher],
 })
 export class EventstorePublisherModule {
   static register(options: EventstoreDbClientOptions): DynamicModule {
     return {
+      global: true,
       module: EventstorePublisherModule,
       providers: [
         {
@@ -67,6 +71,7 @@ export class EventstorePublisherModule {
 
   static registerAsync(options: EventStorePublisherModuleAsyncOptions): DynamicModule {
     return {
+      global: true,
       module: EventstorePublisherModule,
       providers: [...this.createAsyncProviders(options)],
       imports: options.imports || [],
