@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/apps/vite',
     '<rootDir>/apps/conduit.api',
     '<rootDir>/apps/conduit.api.domain',
+    '<rootDir>/libs/eventstore-publisher',
   ],
 };

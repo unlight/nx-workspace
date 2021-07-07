@@ -12,6 +12,9 @@ export class UserCreateHandler implements ICommandHandler<UserCreateCommand> {
   ) {}
 
   async execute(command: UserCreateCommand): Promise<any> {
+    // TODO: This is not correct
+    // We must save event to event store
+    // eventBus.publisher = EventStorePublisher implements IEventPublisher<EventBase>
     const userDto = await this.repository.create(command);
     const user = this.publisher.mergeObjectContext(new User(userDto));
     user.create(user.userId);

@@ -31,6 +31,9 @@
     "conduit.domain": {
       "tags": []
     },
+    "eventstore-publisher": {
+      "tags": []
+    },
     "frontend": {
       "tags": []
     },

@@ -19,7 +19,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-workspace/conduit.domain": ["libs/conduit.domain/src/index.ts"]
+      "@nx-workspace/conduit.domain": ["libs/conduit.domain/src/index.ts"],
+      "@nx-workspace/eventstore-publisher": ["libs/eventstore-publisher/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
