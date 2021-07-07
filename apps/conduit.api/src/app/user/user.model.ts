@@ -1,21 +1,14 @@
 import { AggregateRoot } from '@nestjs/cqrs';
 import { User as UserDto } from '@nx-workspace/conduit.domain';
 import { UserCreatedEvent } from './events/user-created.event';
+import cuid from 'cuid';
 
 export class User extends AggregateRoot {
-  userId: string;
-  email: string;
-  name: string;
-
-  constructor(object: UserDto) {
-    super();
-    this.userId = object.userId;
-    this.email = object.email;
-    this.name = object.name;
-  }
-
-  create(userId: string) {
-    // Logic
-    this.apply(new UserCreatedEvent(userId));
+  create(data: Omit<UserDto, 'userId'>) {
+    const event = new UserCreatedEvent({
+      ...data,
+      userId: cuid(),
+    });
+    this.apply(event);
   }
 }

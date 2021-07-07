@@ -16,21 +16,20 @@ import { CqrsModule, EventPublisher } from '@nestjs/cqrs';
 @Module({
   imports: [CqrsModule],
   providers: [
-    { provide: EventPublisher, useClass: EventStorePublisher },
-    EventStorePublisher,
+    { provide: EventStorePublisher, useClass: EventStorePublisher },
     {
       provide: EVENTSTORE_CLIENT_VALUE,
       inject: [EVENTSTORE_CLIENT_OPTIONS],
       useFactory: (options: EventstoreDbClientOptions) => {
-        return new EventStoreDBClient(<any>{
-          connectionSettings: { ...options.connectionSettings },
-          channelCredentials: { ...options.channelCredentials },
-          defaultUserCredentials: { ...options.defaultUserCredentials },
-        });
+        return new EventStoreDBClient(
+          options.connectionSettings as any,
+          options.channelCredentials,
+          options.defaultUserCredentials as any,
+        );
       },
     },
   ],
-  exports: [CqrsModule, EventPublisher],
+  exports: [CqrsModule, EventStorePublisher],
 })
 export class EventstorePublisherModule {
   static register(options: EventstoreDbClientOptions): DynamicModule {

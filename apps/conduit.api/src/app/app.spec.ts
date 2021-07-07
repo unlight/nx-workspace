@@ -1,6 +1,7 @@
 import request from 'supertest';
 import { INestApplication } from '@nestjs/common';
 import { createApp } from '../main';
+import { EventStoreDBClient } from '@eventstore/db-client';
 
 let app: INestApplication;
 let server: any;
@@ -54,6 +55,15 @@ describe('user', () => {
       expect.objectContaining({
         status: 201,
       }),
+    );
+  });
+
+  it('eventstore db client', async () => {
+    const client = new EventStoreDBClient(
+      {
+        endpoint: 'localhost:2113',
+      },
+      { insecure: true },
     );
   });
 });

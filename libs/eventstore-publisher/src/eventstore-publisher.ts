@@ -14,9 +14,15 @@ export class EventStorePublisher extends EventPublisher<EventData> {
     eventBus.publisher = this;
   }
 
-  publish<T extends EventData>(event: T) {
+  async publish<T extends EventData>(event: T) {
+    const result = await this.eventStoreClient.readAll({ maxCount: 1 });
+    console.log('resultxxx', result);
+
     // TODO: How to get stream name?
-    this.eventStoreClient.appendToStream('user-123', event);
+    // TODO: How to get aggregate id?
+    // await this.eventStoreClient.appendToStream('user-123', event).catch(err => {
+    //   console.log('err', err);
+    // });
   }
 
   // TODO: appendToStream accept event or array
