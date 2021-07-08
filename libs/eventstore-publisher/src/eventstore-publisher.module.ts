@@ -16,6 +16,7 @@ import { CqrsModule, EventPublisher } from '@nestjs/cqrs';
 @Module({
   imports: [CqrsModule],
   providers: [
+    { provide: EventPublisher, useClass: EventStorePublisher },
     { provide: EventStorePublisher, useClass: EventStorePublisher },
     {
       provide: EVENTSTORE_CLIENT_VALUE,
