@@ -13,9 +13,6 @@ export class EventStorePublisher extends EventPublisher<EventData> {
   ) {
     super(eventBus);
     eventBus.publisher = this;
-    eventBus.subject$.subscribe(s => {
-      console.log('>>> s', s);
-    });
   }
 
   publish<T = any>(event: any) {

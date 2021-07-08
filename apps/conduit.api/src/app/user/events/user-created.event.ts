@@ -4,10 +4,16 @@ export class UserCreatedEvent {
   userId: string;
   email: string;
   name: string;
+  password: string;
+  bio?: string;
+  image?: string;
 
-  constructor(object: UserDto) {
-    this.userId = object.userId;
-    this.email = object.email;
-    this.name = object.name;
+  constructor(data: UserDto) {
+    this.userId = data.userId;
+    this.email = data.email;
+    this.name = data.name;
+    this.password = data.password;
+    this.bio = data.bio;
+    this.image = data.image;
   }
 }

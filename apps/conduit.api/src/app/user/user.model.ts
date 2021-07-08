@@ -4,10 +4,10 @@ import { UserCreatedEvent } from './events/user-created.event';
 import cuid from 'cuid';
 
 export class User extends AggregateRoot {
-  userId!: string;
-  email!: string;
-  name!: string;
-  password!: string;
+  userId: string;
+  email: string;
+  name: string;
+  password: string;
   bio?: string;
   image?: string;
 
