@@ -8,6 +8,7 @@ import { CommandHandlers } from './commands';
 import { EventBus } from '@nestjs/cqrs';
 import { CqrsModule } from '@nestjs/cqrs';
 import { EventStore } from '../app.providers';
+import { UserSagas } from './sagas';
 
 @Module({
   imports: [CqrsModule],
@@ -21,6 +22,7 @@ import { EventStore } from '../app.providers';
       useClass: UserRepository,
     },
     ...CommandHandlers,
+    ...UserSagas,
   ],
 })
 export class UserModule {

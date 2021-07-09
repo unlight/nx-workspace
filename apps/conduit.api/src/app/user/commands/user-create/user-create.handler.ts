@@ -3,6 +3,7 @@ import {
   EventBus,
   EventPublisher,
   ICommandHandler,
+  ofType,
 } from '@nestjs/cqrs';
 import { UserCreateCommand } from './user-create.command';
 import { User } from '../../user.model';
@@ -33,9 +34,10 @@ export class UserCreateHandler implements ICommandHandler<UserCreateCommand> {
    */
   async execute(command: UserCreateCommand): Promise<any> {
     const user = this.UserModel.create({ ...command });
+    // Это надо делать в saga?
     this.eventBus.subject$
       .pipe(
-        first(event => event instanceof UserCreatedEvent),
+        ofType(UserCreatedEvent),
         map((data: JSONType) => jsonEvent({ type: 'UserCreated', data })),
         switchMap((event: JSONEventData) => {
           return this.eventStore.appendToStream(`user-${user.userId}`, event, {

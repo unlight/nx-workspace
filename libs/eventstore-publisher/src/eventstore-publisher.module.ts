@@ -33,20 +33,33 @@ import { CqrsModule, EventPublisher } from '@nestjs/cqrs';
   exports: [CqrsModule, EventStorePublisher],
 })
 export class EventstorePublisherModule {
-  static register(options: EventstoreDbClientOptions): DynamicModule {
+  static forRoot(options: EventStorePublisherModuleAsyncOptions): DynamicModule {
     return {
       global: true,
       module: EventstorePublisherModule,
-      providers: [
-        {
-          provide: EVENTSTORE_CLIENT_OPTIONS,
-          useValue: options,
-        },
-      ],
+      providers: [...this.createAsyncProviders(options)],
+      imports: options.imports || [],
     };
   }
 
-  static createAsyncOptionsProvider(
+  private static createAsyncProviders(
+    options: EventStorePublisherModuleAsyncOptions,
+  ): Provider[] {
+    if (options.useFactory || options.useExisting) {
+      return [this.createAsyncOptionsProvider(options)];
+    }
+
+    const useClass = options.useClass as Type<EventStorePublisherFactory>;
+    return [
+      this.createAsyncOptionsProvider(options),
+      {
+        provide: useClass,
+        useClass,
+      },
+    ];
+  }
+
+  private static createAsyncOptionsProvider(
     options: EventStorePublisherModuleAsyncOptions,
   ): Provider {
     if (options.useFactory) {
@@ -67,31 +80,5 @@ export class EventstorePublisherModule {
         factory.createEventStorePublisherOptions(),
       inject,
     };
-  }
-
-  static registerAsync(options: EventStorePublisherModuleAsyncOptions): DynamicModule {
-    return {
-      global: true,
-      module: EventstorePublisherModule,
-      providers: [...this.createAsyncProviders(options)],
-      imports: options.imports || [],
-    };
-  }
-
-  static createAsyncProviders(
-    options: EventStorePublisherModuleAsyncOptions,
-  ): Provider[] {
-    if (options.useFactory || options.useExisting) {
-      return [this.createAsyncOptionsProvider(options)];
-    }
-
-    const useClass = options.useClass as Type<EventStorePublisherFactory>;
-    return [
-      this.createAsyncOptionsProvider(options),
-      {
-        provide: useClass,
-        useClass,
-      },
-    ];
   }
 }
