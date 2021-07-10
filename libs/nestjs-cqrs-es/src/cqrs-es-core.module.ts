@@ -1,19 +1,13 @@
-import {
-  DynamicModule,
-  Global,
-  Module,
-  OnModuleInit,
-  Type,
-} from '@nestjs/common'
-import { CqrsModule, EventBus } from '@nestjs/cqrs'
-import { Config } from './contract/config'
+import { DynamicModule, Global, Module, OnModuleInit, Type } from '@nestjs/common';
+import { CqrsModule, EventBus } from '@nestjs/cqrs';
+import { Config } from './contract/config';
 import {
   EventStoreModuleAsyncOptions,
   ConfigService,
-} from './interfaces/options.interface'
-import { EVENT_STORE_SETTINGS_TOKEN } from './contract/constant'
-import { EventStore } from './eventstore'
-import { Event } from './event'
+} from './interfaces/options.interface';
+import { EVENT_STORE_SETTINGS_TOKEN } from './contract/constant';
+import { EventStore } from './eventstore';
+import { Event } from './event';
 
 @Global()
 @Module({
@@ -27,9 +21,9 @@ export class EventStoreCoreModule implements OnModuleInit {
 
   async onModuleInit() {
     await this.eventStore.client.subscribeToAll(true, (s, resolvedEvent) => {
-      const event = this.eventStore.convertEvent(resolvedEvent)
-      if (event) this.eventBus.subject$.next(event)
-    })
+      const event = this.eventStore.convertEvent(resolvedEvent);
+      if (event) this.eventBus.subject$.next(event);
+    });
   }
 
   static forRoot(config: Config): DynamicModule {
@@ -40,7 +34,7 @@ export class EventStoreCoreModule implements OnModuleInit {
         { provide: EVENT_STORE_SETTINGS_TOKEN, useValue: config },
       ],
       exports: [EventStore],
-    }
+    };
   }
 
   static forRootAsync(options: EventStoreModuleAsyncOptions) {
@@ -48,7 +42,7 @@ export class EventStoreCoreModule implements OnModuleInit {
       module: EventStoreCoreModule,
       providers: [EventStore, this.createAsyncProvider(options)],
       exports: [EventStore],
-    }
+    };
   }
 
   private static createAsyncProvider(options: EventStoreModuleAsyncOptions) {
@@ -57,17 +51,15 @@ export class EventStoreCoreModule implements OnModuleInit {
         provide: EVENT_STORE_SETTINGS_TOKEN,
         useFactory: options.useFactory,
         inject: options.inject || [],
-      }
+      };
     }
     // `as Type<TypeOrmOptionsFactory>` is a workaround for microsoft/TypeScript#31603
-    const inject = [
-      (options.useClass || options.useExisting) as Type<ConfigService>,
-    ]
+    const inject = [(options.useClass || options.useExisting) as Type<ConfigService>];
     return {
       provide: EVENT_STORE_SETTINGS_TOKEN,
       useFactory: async (optionsFactory: ConfigService) =>
         await optionsFactory.createEventStoreConfig(),
       inject,
-    }
+    };
   }
 }

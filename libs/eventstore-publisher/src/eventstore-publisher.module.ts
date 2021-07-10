@@ -70,15 +70,13 @@ export class EventstorePublisherModule {
       };
     }
 
-    const inject = [
-      (options.useClass || options.useExisting) as Type<EventStorePublisherFactory>,
-    ];
-
     return {
       provide: EVENTSTORE_CLIENT_OPTIONS,
-      useFactory: (factory: EventStorePublisherFactory) =>
-        factory.createEventStorePublisherOptions(),
-      inject,
+      useFactory: async (factory: EventStorePublisherFactory) =>
+        await factory.createEventStorePublisherOptions(),
+      inject: [
+        (options.useClass || options.useExisting) as Type<EventStorePublisherFactory>,
+      ],
     };
   }
 }

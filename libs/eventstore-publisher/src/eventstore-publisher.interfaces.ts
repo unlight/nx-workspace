@@ -17,7 +17,9 @@ export interface EventstoreDbClientOptions {
 }
 
 export interface EventStorePublisherFactory {
-  createEventStorePublisherOptions(): EventstoreDbClientOptions;
+  createEventStorePublisherOptions():
+    | EventstoreDbClientOptions
+    | Promise<EventstoreDbClientOptions>;
 }
 
 export interface EventStorePublisherModuleAsyncOptions
