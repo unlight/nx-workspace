@@ -17,23 +17,9 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "parallel": 1
       }
-    }
-  },
-  "projects": {
-    "api": {
-      "tags": []
-    },
-    "frontend": {
-      "tags": []
-    },
-    "frontend-e2e": {
-      "tags": [],
-      "implicitDependencies": ["frontend"]
-    },
-    "vite": {
-      "tags": []
     }
   },
   "targetDependencies": {
@@ -43,5 +29,9 @@
         "projects": "dependencies"
       }
     ]
-  }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/nest"
+  },
+  "defaultProject": "api"
 }

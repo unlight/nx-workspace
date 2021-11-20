@@ -1,36 +1,5 @@
 {
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/nest"
-  },
-  "defaultProject": "api",
-  "generators": {
-    "@nrwl/react": {
-      "application": {
-        "style": "css",
-        "linter": "eslint",
-        "babel": true
-      },
-      "component": {
-        "style": "css"
-      },
-      "library": {
-        "style": "css",
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/web:application": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "none"
-    },
-    "@nrwl/web:library": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    }
-  },
   "projects": {
     "api": {
       "root": "apps/api",
@@ -73,7 +42,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/api/**/*.ts"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -90,7 +60,8 @@
             "jestConfig": "apps/api/jest-e2e.config.js"
           }
         }
-      }
+      },
+      "tags": []
     },
     "frontend": {
       "root": "apps/frontend",
@@ -151,7 +122,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/frontend/**/*.{ts,tsx,js,jsx}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -161,7 +133,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     },
     "frontend-e2e": {
       "root": "apps/frontend-e2e",
@@ -185,9 +158,12 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/frontend-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["frontend"]
     },
     "vite": {
       "projectType": "application",
@@ -227,7 +203,8 @@
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/vite/**/*.ts"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "executor": "@nrwl/jest:jest",
@@ -237,7 +214,8 @@
             "passWithNoTests": true
           }
         }
-      }
+      },
+      "tags": []
     }
   }
 }
