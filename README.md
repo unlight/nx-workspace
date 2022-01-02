@@ -46,6 +46,7 @@
 - https://medium.com/angular-in-depth/the-shell-library-patterns-with-nx-and-monorepo-architectures-d7ec5713c8a6
 - https://github.com/briebug/cypress-schematic
 - https://nx.dev/latest/node/workspace/run-commands-executor
+- https://github.com/nhaancs/realworld-nx-nestjs-angular
 
 ## Todo
 
