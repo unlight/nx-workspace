@@ -1,9 +1,9 @@
 # nx-workspace
 
+- Upgrade `nx migrate latest`
 - Run `nx.js run [project][:target][:configuration][options, ...]`
 - Generate app `nx generate @nrwl/node:application <node-app>`
 - Rename `nx g @nrwl/workspace:mv --project api-test --destination api-spec`
-- Upgrade `nx migrate latest`
 - Run `nx g @nrwl/react:app my-app` to generate an application
 - Run `nx g @nrwl/react:lib my-lib` to generate a library
 - Libraries are shareable across libraries and applications. They can be imported from `@nx-workspace/mylib`
@@ -35,7 +35,7 @@
 
 - https://getpocket.com/my-list/tags/nx
 - Nx Documentation https://nx.dev
-- Community plugins https://nx.dev/nx-community
+- Community plugins https://nx.dev/community
 - https://www.youtube.com/watch?v=bvzXuAu7XHk Full Stack Type Safety with Angular, Nest, Nx, and Prisma https://github.com/chenkie/shirt-shop
 - [How to programmatically enforce boundaries between applications and libraries in an Nx monorepo](https://medium.com/showpad-engineering/how-to-programmatically-enforce-boundaries-between-applications-and-libraries-in-an-nx-monorepo-39bf8fbec6ba)
 - [How to organize and name applications and libraries in an Nx monorepo for immediate team-wide…](https://medium.com/showpad-engineering/how-to-organize-and-name-applications-and-libraries-in-an-nx-monorepo-for-immediate-team-wide-9876510dbe28)
@@ -47,6 +47,7 @@
 - https://github.com/briebug/cypress-schematic
 - https://nx.dev/latest/node/workspace/run-commands-executor
 - https://github.com/nhaancs/realworld-nx-nestjs-angular
+- https://github.com/wlucha/angular-nest-nx
 
 ## Todo
 
