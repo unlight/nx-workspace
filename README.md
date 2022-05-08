@@ -48,6 +48,7 @@
 - https://nx.dev/latest/node/workspace/run-commands-executor
 - https://github.com/nhaancs/realworld-nx-nestjs-angular
 - https://github.com/wlucha/angular-nest-nx
+- https://github.com/Sairyss/full-stack-application-example
 
 ## Todo
 

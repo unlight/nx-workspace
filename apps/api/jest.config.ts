@@ -1,8 +1,8 @@
-const preset = require('../../jest.preset.js');
+const preset = require(__dirname + '/../../jest.preset.js');
 
 module.exports = {
   displayName: 'api',
-  preset: '../../jest.preset.js',
+
   testMatch: ['**/src/**/*.spec.{ts,tsx}'],
   globals: {
     'ts-jest': {
@@ -16,4 +16,5 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/apps/api',
   testEnvironment: 'node',
+  preset: '../../jest.preset.ts',
 };
